@@ -5,7 +5,7 @@ set_time_limit(300);
 // Define your repository directory and branch
 $repoDir = "C:/xampp/htdocs/{$_GET['folderName']}";
 $branch = $_GET['branch'];
-$username = $GET['username'];
+$username = $_GET['username'];
 $pat = $_GET['token'];
 $html = $_GET['html'];
 $secret = 'somethingtheheonlyknow';

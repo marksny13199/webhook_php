@@ -3,7 +3,7 @@
     $startTime = microtime(true);
 
     // Get credentials from request
-    $username = $GET['username'];
+    $username = $_GET['username'];
     $pat = $_GET['token'];
     $html = $_GET['html'];
     $folderName = $_GET['folderName'];
