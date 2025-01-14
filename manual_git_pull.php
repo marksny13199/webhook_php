@@ -1,7 +1,7 @@
 <?php 
     set_time_limit(300);
     $startTime = microtime(true);
-
+    
     // Get credentials from request
     $username = $_GET['username'];
     $pat = $_GET['token'];
