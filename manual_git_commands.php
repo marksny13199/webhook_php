@@ -8,6 +8,7 @@
     $html = $_GET['html'];
     $folderName = $_GET['folderName'];
     $branch = $_GET['branch'];
+    $cmd = $_GET['command'];
 
     // Execute the Git pull command with credentials
     $repoDir = "C:/xampp/htdocs/$folderName";
@@ -17,7 +18,14 @@
     $directory = dirname($logfilename);
 
     // Construct the Git command with credentials
-    $gitCommand = "cd $repoDir && git pull https://$username:$pat@$html $branch 2>&1";
+    if($cmd == 'clone') {
+        $gitCommand = "cd C:/xampp/htdocs && git clone https://$username:$pat@$html 2>&1";
+    } else if($cmd == 'pull') {
+        $gitCommand = "cd $repoDir && git pull https://$username:$pat@$html $branch 2>&1";
+    } else {
+        $gitCommand = $cmd;    
+    }
+
     exec($gitCommand, $output, $returnVar);
 
     // Log the output and return status
@@ -33,9 +41,9 @@
     
     if ($returnVar === 0) {
         http_response_code(200);
-        echo "Repository updated successfully";
+        echo "Result: " . implode("\n", $output);
     } else {
         http_response_code(500);
-        echo "Git pull failed: " . implode("\n", $output);
+        echo "Result: " . implode("\n", $output);
     }
 ?>
