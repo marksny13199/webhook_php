@@ -39,11 +39,6 @@
 
     file_put_contents($logfilename, $logContent, FILE_APPEND);
     
-    if ($returnVar === 0) {
-        http_response_code(200);
-        echo "Result: " . implode("\n", $output);
-    } else {
-        http_response_code(500);
-        echo "Result: " . implode("\n", $output);
-    }
+    http_response_code(200);
+    echo "$returnVar: " . implode("\n", $output);
 ?>
